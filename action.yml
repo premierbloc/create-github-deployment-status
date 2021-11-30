@@ -1,0 +1,21 @@
+name: "premierbloc - Create Github deployment status"
+description: "Creates a Github deployment status."
+
+inputs:
+  id:
+    description: "The id of the Github deployment."
+    required: true
+  status:
+    description: "The Github deployment status."
+    required: true
+  token:
+    description: "The Github token to use for authentication."
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.id }}
+    - ${{ inputs.status }}
+    - ${{ inputs.token }}
